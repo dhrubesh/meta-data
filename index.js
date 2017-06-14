@@ -3,7 +3,7 @@ const app = express()
 const morgan = require('morgan')
 const path = require('path')
 const multer = require('multer')
-
+const upload = multer()
 
 
 app.get('/', function (req, res) {
@@ -11,8 +11,8 @@ app.get('/', function (req, res) {
 //   res.send('all set')
 })
 
-app.post('/upload',function(req,res){
-    res.json()
+app.post('/upload',upload.single('file'),function(req,res){
+    res.json(req.file)
 })
 
 app.listen(8080, function () {
