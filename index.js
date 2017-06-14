@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
 })
 
 app.post('/upload',upload.single('file'),function(req,res){
-    res.json(req.file)
+    res.json("size: "+req.file.size)
 })
 
 app.listen(8080, function () {
